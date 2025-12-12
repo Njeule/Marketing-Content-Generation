@@ -711,8 +711,6 @@
       const channels = channelList.length ? channelList.join(" • ") : "—";
       const createdAt = data.created_at || metadata.generated_at || rootJson.created_at || "";
 
-const channelList = Array.isArray(metadata.channels) ? metadata.channels : [];
-
 // Hide sections that were not requested
 const emailField = emailBox.closest(".field");
 const socialField = socialBox.closest(".field");
@@ -721,16 +719,6 @@ const blogField = blogBox.closest(".field");
 if (emailField) emailField.style.display = channelList.includes("email") ? "" : "none";
 if (socialField) socialField.style.display = channelList.includes("social") ? "" : "none";
 if (blogField) blogField.style.display = channelList.includes("blog") ? "" : "none";
-
-
-      // Hide sections for channels that were not selected
-      const emailSection = emailBox.parentElement;
-      const socialSection = socialBox.parentElement;
-      const blogSection = blogBox.parentElement;
-
-      emailSection.style.display = channelList.includes("email") ? "" : "none";
-      socialSection.style.display = channelList.includes("social") ? "" : "none";
-      blogSection.style.display = channelList.includes("blog") ? "" : "none";
 
       overviewBox.innerHTML = `
         <div><strong>Campaign:</strong> ${metadata.campaign_name || "—"}</div>
